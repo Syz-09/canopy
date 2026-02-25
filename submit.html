@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit to CANOPY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="submit-page">
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg-gradient"></div>
+    <div class="site-bg-dots"></div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand">CANOPY<span class="nav-brand-full"> — Cardinal Network for Open Projects and Youth Innovation</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html#publish">What we publish</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#involved">Get involved</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="submit.html" class="nav-cta">Submit</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- B1. Page header -->
+    <section class="submit-hero">
+      <h1>Submit to CANOPY</h1>
+      <p class="subhead">Share a project, request a feature, or join as a contributor.</p>
+      <p class="micro">Published with consent and context. Edits are made for clarity before anything goes live.</p>
+    </section>
+
+    <!-- B2. Tabs -->
+    <section style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-xl) var(--space-lg);">
+      <div class="submit-tabs" role="tablist">
+        <a href="#project" role="tab" aria-selected="true" class="is-active" data-panel="project">Submit a Project</a>
+        <a href="#feature" role="tab" aria-selected="false" data-panel="feature">Request a Feature</a>
+        <a href="#contributor" role="tab" aria-selected="false" data-panel="contributor">Join as Contributor</a>
+      </div>
+
+      <!-- B3. Form 1 — Submit a Project -->
+      <div id="project" class="submit-panel is-active" role="tabpanel">
+        <p class="form-intro">Turn your work into a structured record others can learn from.</p>
+        <form class="submit-form" data-form="project">
+          <div class="form-group">
+            <label for="project-name">Full name <span aria-label="required">*</span></label>
+            <input type="text" id="project-name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="project-affiliation">Stanford affiliation <span aria-label="required">*</span></label>
+            <select id="project-affiliation" name="affiliation" required>
+              <option value="">Select…</option>
+              <option value="student">Student</option>
+              <option value="alumni">Alumni</option>
+              <option value="faculty">Faculty</option>
+              <option value="staff">Staff</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="project-title">Project title <span aria-label="required">*</span></label>
+            <input type="text" id="project-title" name="project_title" required />
+          </div>
+          <div class="form-group">
+            <label for="project-desc">Short description <span aria-label="required">*</span></label>
+            <textarea id="project-desc" name="description" placeholder="What are you building? What problem does it address? Where are you in the process?" required></textarea>
+          </div>
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="project-consent" name="consent" required />
+            <label for="project-consent">I consent to publish this in an educational context. <span aria-label="required">*</span></label>
+          </div>
+          <fieldset class="form-group" style="border: none; padding: 0; margin: 0;">
+            <legend style="font-size: 0.9rem; font-weight: 500; margin-bottom: var(--space-xs);">Links <span class="optional">(optional)</span></legend>
+            <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+              <input type="url" name="link_demo" placeholder="Demo" />
+              <input type="url" name="link_repo" placeholder="Repo" />
+              <input type="url" name="link_paper" placeholder="Paper" />
+              <input type="url" name="link_slides" placeholder="Slides" />
+              <input type="url" name="link_video" placeholder="Video" />
+            </div>
+          </fieldset>
+          <div class="form-group">
+            <label for="project-privacy">Privacy preference <span class="optional">(optional)</span></label>
+            <select id="project-privacy" name="privacy">
+              <option value="public">Public</option>
+              <option value="limited">Limited</option>
+              <option value="anonymized">Anonymized</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="project-sensitive">Sensitive info notes <span class="optional">(optional)</span></label>
+            <textarea id="project-sensitive" name="sensitive" placeholder="Anything to omit or redact?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit project</button>
+          <div class="form-success" id="project-success" role="status">Submission received. An editor will follow up for clarification and consent confirmation before publishing.</div>
+        </form>
+      </div>
+
+      <!-- B4. Form 2 — Request a Feature -->
+      <div id="feature" class="submit-panel" role="tabpanel">
+        <p class="form-intro">Nominate a project or request an interview.</p>
+        <form class="submit-form" data-form="feature">
+          <div class="form-group">
+            <label for="feature-name">Your name <span aria-label="required">*</span></label>
+            <input type="text" id="feature-name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="feature-who">Who/what should be featured? <span aria-label="required">*</span></label>
+            <input type="text" id="feature-who" name="who" required />
+          </div>
+          <div class="form-group">
+            <label for="feature-why">Why it matters (2–3 sentences) <span aria-label="required">*</span></label>
+            <textarea id="feature-why" name="why" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="feature-link">Best link / contact <span class="optional">(optional)</span></label>
+            <input type="text" id="feature-link" name="link" />
+          </div>
+          <button type="submit" class="btn btn-primary">Request feature</button>
+          <div class="form-success" id="feature-success" role="status">Thanks—received. Follow-up will come via email.</div>
+        </form>
+      </div>
+
+      <!-- B5. Form 3 — Join as Contributor -->
+      <div id="contributor" class="submit-panel" role="tabpanel">
+        <p class="form-intro">Help document student work with clarity and care.</p>
+        <form class="submit-form" data-form="contributor">
+          <div class="form-group">
+            <label for="contrib-name">Name <span aria-label="required">*</span></label>
+            <input type="text" id="contrib-name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="contrib-affiliation">Stanford affiliation <span aria-label="required">*</span></label>
+            <select id="contrib-affiliation" name="affiliation" required>
+              <option value="">Select…</option>
+              <option value="student">Student</option>
+              <option value="alumni">Alumni</option>
+              <option value="faculty">Faculty</option>
+              <option value="staff">Staff</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <span class="form-group label" style="display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: var(--space-xs);">Roles <span aria-label="required">*</span></span>
+            <div class="checkbox-group" style="flex-wrap: wrap;">
+              <label><input type="checkbox" name="role" value="writer" /> Writer</label>
+              <label><input type="checkbox" name="role" value="editor" /> Editor</label>
+              <label><input type="checkbox" name="role" value="design" /> Design</label>
+              <label><input type="checkbox" name="role" value="video" /> Video</label>
+              <label><input type="checkbox" name="role" value="ops" /> Ops</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contrib-note">Short note <span aria-label="required">*</span></label>
+            <textarea id="contrib-note" name="note" placeholder="What do you want to work on?" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="contrib-samples">Work samples link(s) <span class="optional">(optional)</span></label>
+            <input type="url" id="contrib-samples" name="samples" />
+          </div>
+          <button type="submit" class="btn btn-primary">Join</button>
+          <div class="form-success" id="contributor-success" role="status">Thanks—received. Next steps will arrive by email.</div>
+        </form>
+      </div>
+    </section>
+
+    <!-- B6. Newsletter -->
+    <section class="submit-newsletter" style="max-width: 72rem; margin: 0 auto; padding: 0 var(--space-xl);">
+      <div id="newsletter" class="newsletter-block">
+        <h3>Get updates</h3>
+        <p>Occasional releases: new profiles, notes, and talks.</p>
+        <form class="newsletter-form" action="#" method="post" aria-label="Newsletter signup">
+          <input type="email" name="email" placeholder="you@stanford.edu" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Student-led publication. Published with consent and context.</p>
+    <p>Educational documentation for learning and continuity.</p>
+    <p>Email: <a href="mailto:canopy@stanford.edu" class="contact-email">canopy@stanford.edu</a></p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
