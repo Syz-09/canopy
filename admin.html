@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CANOPY Admin</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 1.5rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #050816;
+      color: #f5f5f5;
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 1.6rem;
+    }
+    p {
+      margin: 0.25rem 0 1rem;
+      color: #c0c4d8;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      background: #111827;
+    }
+    th, td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #1f2937;
+      vertical-align: top;
+    }
+    th {
+      text-align: left;
+      background: #0f172a;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tr:hover {
+      background: #1f2937;
+    }
+    code {
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+      color: #e5e7eb;
+    }
+    button {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #f97373;
+      background: transparent;
+      color: #fecaca;
+    }
+    button:hover {
+      background: rgba(248, 113, 113, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <h1>CANOPY Admin</h1>
+  <p>查看和管理所有 Submit / Feature / Contributor 提交。</p>
+
+  <table id="tbl">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Created</th>
+        <th>Details</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    function load() {
+      fetch('/api/admin/submissions')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data.ok) return;
+          var tbody = document.querySelector('#tbl tbody');
+          tbody.innerHTML = '';
+          data.items.forEach(function (item) {
+            var payload = {};
+            try {
+              payload = JSON.parse(item.payload || '{}');
+            } catch (e) {
+              payload = {};
+            }
+
+            var detailsHtml = '';
+            if (item.form_type === 'project') {
+              detailsHtml =
+                '<div><strong>Affiliation:</strong> ' + (payload.affiliation || '') + '</div>' +
+                '<div><strong>Title:</strong> ' + (payload.project_title || '') + '</div>' +
+                '<div><strong>Description:</strong> ' + (payload.description || '') + '</div>' +
+                '<div><strong>Privacy:</strong> ' + (payload.privacy || '') + '</div>';
+            } else if (item.form_type === 'feature') {
+              detailsHtml =
+                '<div><strong>Who/what:</strong> ' + (payload.who || '') + '</div>' +
+                '<div><strong>Why:</strong> ' + (payload.why || '') + '</div>' +
+                '<div><strong>Link:</strong> ' + (payload.link || '') + '</div>';
+            } else if (item.form_type === 'contributor') {
+              var roles = payload.role;
+              if (Array.isArray(roles)) {
+                roles = roles.join(', ');
+              }
+              detailsHtml =
+                '<div><strong>Affiliation:</strong> ' + (payload.affiliation || '') + '</div>' +
+                '<div><strong>Roles:</strong> ' + (roles || '') + '</div>' +
+                '<div><strong>Note:</strong> ' + (payload.note || '') + '</div>' +
+                '<div><strong>Samples:</strong> ' + (payload.samples || '') + '</div>';
+            } else {
+              detailsHtml = '<code>' + (item.payload || '') + '</code>';
+            }
+
+            var tr = document.createElement('tr');
+            tr.innerHTML =
+              '<td>' + item.id + '</td>' +
+              '<td>' + item.form_type + '</td>' +
+              '<td>' + (item.name || '') + '</td>' +
+              '<td>' + (item.email || '') + '</td>' +
+              '<td>' + item.created_at + '</td>' +
+              '<td>' + detailsHtml + '</td>' +
+              '<td><button data-id=\"' + item.id + '\">Delete</button></td>';
+            tbody.appendChild(tr);
+          });
+
+          tbody.querySelectorAll('button[data-id]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var id = btn.getAttribute('data-id');
+              if (!confirm('确定删除 #' + id + ' ?')) return;
+              fetch('/api/admin/submissions/' + id, { method: 'DELETE' })
+                .then(function () { load(); });
+            });
+          });
+        });
+    }
+
+    load();
+  </script>
+</body>
+</html>
+

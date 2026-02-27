@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CANOPY — Student-led publication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="tubes-home">
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg-gradient"></div>
+    <div class="site-bg-dots"></div>
+  </div>
+  <!-- Global nav (sticky) -->
+  <nav class="site-nav">
+    <a href="/" class="nav-brand">CANOPY<span class="nav-brand-full"> — Cardinal Network for Open Projects and Youth Innovation</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#publish">What we publish</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#involved">Get involved</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="submit.html" class="nav-cta">Submit</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- A1. Hero with Tubes canvas background -->
+    <section class="hero hero-tubes" id="top">
+      <canvas id="canvas" class="tubes-canvas"></canvas>
+      <div class="hero-inner hero-tubes-inner">
+        <h1>CANOPY</h1>
+        <p class="hero-subhead">A student-led publication documenting how Stanford students build—projects, research prototypes, and community initiatives—published with consent and context.</p>
+        <p class="hero-support">Structured, revisitable records of what was built, what changed, and what was learned.</p>
+        <div class="hero-ctas">
+          <a href="submit.html#project" class="btn btn-primary">Submit a Project →</a>
+          <a href="#newsletter-hero" class="btn btn-secondary">Get Updates</a>
+        </div>
+        <p class="hero-micro">Consent-first publishing. Clear context. Built for continuity.</p>
+        <div class="hero-stats" aria-hidden="true">
+          <span>Profiles</span>
+          <span>Notes</span>
+          <span>Talks</span>
+        </div>
+        <!-- Newsletter (Hero placement) -->
+        <div class="newsletter-block" id="newsletter-hero" style="margin-top: var(--space-2xl);">
+          <h3>Get updates</h3>
+          <p>Occasional releases: new profiles, notes, and talks.</p>
+          <form class="newsletter-form" action="#" method="post" aria-label="Newsletter signup">
+            <input type="email" name="email" placeholder="you@stanford.edu" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- A2. What we publish -->
+    <section id="publish" class="reveal">
+      <h2 class="section-title">What CANOPY publishes</h2>
+      <p class="section-intro">We publish repeatable formats—so student work is searchable, understandable, and easy to learn from.</p>
+      <div class="publish-grid">
+        <article class="card">
+          <h3>Project Profiles</h3>
+          <p>Structured project pages: problem → approach → milestones → artifacts → lessons.</p>
+        </article>
+        <article class="card">
+          <h3>Builder Notes</h3>
+          <p>Decision logs and postmortems—tradeoffs, mistakes, and what we'd do differently.</p>
+        </article>
+        <article class="card">
+          <h3>Talks & Conversations</h3>
+          <p>Recorded interviews and campus dialogues with reusable takeaways.</p>
+        </article>
+        <article class="card">
+          <h3>Guides & Templates</h3>
+          <p>Lightweight templates and standards that help contributors document work clearly and safely.</p>
+        </article>
+      </div>
+
+      <!-- Image slots (placeholders) -->
+      <div class="publish-images">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Students presenting a project (placeholder)" />
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80" alt="Team collaborating over notes and screens (placeholder)" />
+        </figure>
+      </div>
+      <p class="mini-cta"><a href="submit.html#project">Want to contribute a profile or note? → Submit</a></p>
+    </section>
+
+    <!-- A3. How it works -->
+    <section id="how" class="reveal">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Submit</h3>
+          <p>Share a project (or nominate one) using a short structured template.</p>
+        </div>
+        <div class="step">
+          <h3>Edit for clarity</h3>
+          <p>Editors shape the draft so it's legible beyond insider context.</p>
+        </div>
+        <div class="step">
+          <h3>Publish & update</h3>
+          <p>Profiles stay revisitable. Updates can be added as the project evolves.</p>
+        </div>
+      </div>
+      <p class="steps-micro">Nothing is published without consent confirmation.</p>
+    </section>
+
+    <!-- A4. Featured (preview cards + launching) -->
+    <section class="featured-section reveal" id="featured">
+      <h2 class="section-title">First releases (coming soon)</h2>
+      <p class="section-intro">We're assembling the first set of profiles and notes. First releases are in progress. Get the first drops when they publish.</p>
+      <div class="featured-grid">
+        <article class="preview-card">
+          <span class="badge">Preview — Profile</span>
+          <h3>How a class project became a prototype—what changed along the way.</h3>
+          <div class="tags">
+            <span class="tag">Profile</span>
+            <span class="tag">Prototype</span>
+          </div>
+        </article>
+        <article class="preview-card">
+          <span class="badge">Preview — Note</span>
+          <h3>A decision log on scope: what we cut, what we kept, and why.</h3>
+          <div class="tags">
+            <span class="tag">Note</span>
+            <span class="tag">Scope</span>
+          </div>
+        </article>
+        <article class="preview-card">
+          <span class="badge">Preview — Talk</span>
+          <h3>A conversation on iteration habits—what builders actually do week to week.</h3>
+          <div class="tags">
+            <span class="tag">Talk</span>
+            <span class="tag">Iteration</span>
+          </div>
+        </article>
+      </div>
+      <div class="featured-cta">
+        <a href="submit.html#newsletter" class="btn btn-primary">Get Updates</a>
+      </div>
+    </section>
+
+    <!-- A5. Get involved -->
+    <section id="involved" class="reveal">
+      <h2 class="section-title">Get involved</h2>
+      <div class="involved-grid">
+        <article class="involved-card">
+          <h3>Submit a Project</h3>
+          <p>Have something you're building? Turn it into a structured profile.</p>
+          <a href="submit.html#project" class="btn btn-primary">Submit a Project →</a>
+        </article>
+        <article class="involved-card">
+          <h3>Request a Feature</h3>
+          <p>Suggest someone to interview—or request a profile for your project.</p>
+          <a href="submit.html#feature" class="btn btn-primary">Request a Feature →</a>
+        </article>
+        <article class="involved-card">
+          <h3>Join as a Contributor</h3>
+          <p>Writers, editors, designers, and videographers—help build the archive.</p>
+          <a href="submit.html#contributor" class="btn btn-primary">Join as Contributor →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- A6. Contact -->
+    <section class="contact-section reveal" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p>Questions, suggestions, or collaboration ideas—reach out.</p>
+      <p><strong>Contact</strong><br />Email: <a href="mailto:canopy@stanford.edu" class="contact-email">canopy@stanford.edu</a></p>
+      <p class="contact-social">Social: <a href="#">LinkedIn</a> <a href="#">Instagram</a> (if available)</p>
+      <p style="font-size: 0.9rem; color: var(--color-text-muted);">Prefer a quick form? <a href="submit.html">Submit below</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Student-led publication. Published with consent and context.</p>
+    <p>Educational documentation for learning and continuity.</p>
+    <p>Email: <a href="mailto:canopy@stanford.edu" class="contact-email">canopy@stanford.edu</a></p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/canopy-bg.js"></script>
+</body>
+</html>
