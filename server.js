@@ -188,6 +188,7 @@ app.get('/admin-login', (req, res) => {
 app.post('/admin-login', (req, res) => {
   const { user, pass } = req.body;
   if (user === ADMIN_USER && pass === ADMIN_PASS) {
+    // Session cookie only: 不设 Max-Age/Expires，关闭浏览器后需重新登录
     res.setHeader(
       'Set-Cookie',
       'canopy_admin=1; HttpOnly; Path=/; SameSite=Lax'

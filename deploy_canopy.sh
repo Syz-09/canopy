@@ -58,12 +58,37 @@ server {
     root /var/www/canopy-website;
     index index.html;
 
-    # 对静态站点，简单返回文件即可
+    # Admin 与登录、API 由 Node 后端处理（需在 3000 端口运行 node server.js）
+    location = /admin {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    location /admin-login {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    location /api/ {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 静态站点
     location / {
         try_files $uri $uri/ =404;
     }
 
-    # 可选：更长缓存时间
     location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|webp)$ {
         try_files $uri =404;
         access_log off;
