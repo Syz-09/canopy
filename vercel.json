@@ -2,7 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": null,
   "outputDirectory": ".",
-  "installCommand": "echo 'Static site, skip install'",
   "framework": null,
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" }
