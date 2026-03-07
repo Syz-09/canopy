@@ -1,4 +1,5 @@
 // Shared: read/write submissions JSON from Vercel Blob (pathname canopy/submissions.json)
+// Uses @vercel/blob ^2.x (get, put with private + allowOverwrite)
 const BLOB_PATH = 'canopy/submissions.json';
 const { get, put, list } = require('@vercel/blob');
 
