@@ -1,4 +1,4 @@
-const { readSubmissions, writeSubmissions } = require('../kv-store');
+const { readSubmissions, writeSubmissions } = require('../blob-store');
 
 function parseBody(req) {
   if (typeof req.body === 'object' && req.body !== null) return req.body;
