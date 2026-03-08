@@ -1,4 +1,4 @@
-const { readSubmissions, writeSubmissions } = require('../blob-store');
+const { readSubmissions, writeSubmissions } = require('../kv-store');
 
 function parseCookies(req) {
   const raw = req.headers.cookie || '';
